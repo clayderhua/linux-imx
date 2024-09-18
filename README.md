@@ -1,2 +1,0 @@
-# linux-imx
-linux-imx
