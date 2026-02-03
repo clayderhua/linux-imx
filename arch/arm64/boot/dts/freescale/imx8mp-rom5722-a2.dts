@@ -644,8 +644,8 @@
 	pinctrl-names = "default", "gpio";
 	pinctrl-0 = <&pinctrl_i2c5>;
 	pinctrl-1 = <&pinctrl_i2c5_gpio>;
-	scl-gpios = <&gpio2 0 GPIO_ACTIVE_HIGH>;
-	sda-gpios = <&gpio2 1 GPIO_ACTIVE_HIGH>;
+	scl-gpios = <&gpio3 26 GPIO_ACTIVE_HIGH>;
+	sda-gpios = <&gpio3 27 GPIO_ACTIVE_HIGH>;
 	status = "okay";
 
 #ifdef ROM_DB5901
@@ -898,8 +898,8 @@
 
 	pinctrl_hog: hoggrp {
 		fsl,pins = <
-			MX8MP_IOMUXC_HDMI_DDC_SCL__HDMIMIX_HDMI_SCL	0x400001c2
-			MX8MP_IOMUXC_HDMI_DDC_SDA__HDMIMIX_HDMI_SDA	0x400001c2
+			//MX8MP_IOMUXC_HDMI_DDC_SCL__HDMIMIX_HDMI_SCL	0x400001c2
+			//MX8MP_IOMUXC_HDMI_DDC_SDA__HDMIMIX_HDMI_SDA	0x400001c2
 			MX8MP_IOMUXC_HDMI_HPD__HDMIMIX_HDMI_HPD		0x40000010
 			//MX8MP_IOMUXC_SAI1_TXD6__GPIO4_IO18	0x10		/* GPIO0 / CAM0_PWR# */
 			//MX8MP_IOMUXC_SAI1_TXD7__GPIO4_IO19	0x10		/* GPIO1 / CAM1_PWR#  */
@@ -1098,7 +1098,7 @@
 			MX8MP_IOMUXC_SD1_DATA3__GPIO2_IO05		0x10
 		>;
 	};
-
+/*
 	pinctrl_i2c5: i2c5grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SD1_CLK__I2C5_SCL			0x400001c2
@@ -1112,6 +1112,21 @@
 			MX8MP_IOMUXC_SD1_CMD__GPIO2_IO01		0x10
 		>;
 	};
+*/
+        pinctrl_i2c5: i2c5grp {
+                fsl,pins = <
+                        MX8MP_IOMUXC_HDMI_DDC_SCL__I2C5_SCL             0x400001c2
+                        MX8MP_IOMUXC_HDMI_DDC_SDA__I2C5_SDA             0x400001c2
+                >;
+        };
+
+        pinctrl_i2c5_gpio: i2c5_gpio_grp {
+                fsl,pins = <
+                        MX8MP_IOMUXC_HDMI_DDC_SCL__GPIO3_IO26           0x10
+                        MX8MP_IOMUXC_HDMI_DDC_SDA__GPIO3_IO27           0x10
+                >;
+        };
+
 
 	pinctrl_i2c6: i2c6grp {
 		fsl,pins = <
